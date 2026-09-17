@@ -13,7 +13,7 @@ ORDER BY unit_price::numeric DESC;
 
 **Resultado:** 
 
-
+![Descripción de la imagen](images/p01.png)
 
 **Comentario:** Uso BETWEEN para indicar que el precio debe estar entre 10 y 50, y ROUND para mostrar el precio con dos decimales.
 
@@ -42,7 +42,7 @@ ORDER BY
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p02.png)
 
 **Comentario:** Agrupo los clientes por país con GROUP BY y uso HAVING para quedarme solo con los países que tienen 5 o más clientes, ya que el filtro se aplica después de agrupar.
 
@@ -73,7 +73,7 @@ WHERE
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p03.png)
 
 **Comentario:** Filtro los productos donde el stock es menor o igual al nivel de reposición, y uso un CASE para mostrar 'CRÍTICO' cuando el stock es 0 y 'AVISO' en los demás casos.
 
@@ -103,7 +103,7 @@ p.product_name ASC;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p04.png)
 
 **Comentario:** Uso INNER JOIN para relacionar productos con su proveedor y su categoría, y filtro los países con IN para no repetir varias condiciones.
 
@@ -135,7 +135,7 @@ WHERE o.order_id = 10248
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p05.png)
 
 **Comentario:** Calculo el importe de cada línea multiplicando el precio por la cantidad y aplicando el descuento correspondiente.
 
@@ -163,7 +163,7 @@ HAVING ROUND(SUM(od.unit_price::numeric * od.quantity * (1 - od.discount::numeri
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p06.png)
 
 **Comentario:** Calculo la facturación multiplicando precio, cantidad y descuento, y uso HAVING para mostrar solo las categorías que superan los 100.000€.
 
@@ -189,7 +189,7 @@ ORDER BY num_pedidos ASC;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p07.png)
 
 **Comentario:** Uso LEFT JOIN para incluir también a los clientes que no tienen pedidos, y COALESCE para mostrar 'SIN PEDIDOS' en lugar de un valor nulo.
 
@@ -215,7 +215,7 @@ LEFT JOIN
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p08.png)
 
 **Comentario:** Relaciono la tabla employees consigo misma con LEFT JOIN para obtener el jefe de cada empleado, y uso COALESCE para mostrar 'DIRECCIÓN GENERAL' cuando no tiene jefe.
 
@@ -248,7 +248,7 @@ ORDER BY categoria, anio;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p09.png)
 
 **Comentario:** Uso CROSS JOIN para generar todas las combinaciones de categoría y año, y LEFT JOIN con COALESCE para que las combinaciones sin ventas aparezcan con 0.
 
@@ -285,7 +285,7 @@ ORDER BY pais;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p10.png)
 
 **Comentario:** Uso FULL JOIN para incluir los países que tienen clientes, proveedores o ambos, y COALESCE para evitar valores nulos en los conteos.
 
@@ -332,7 +332,7 @@ ORDER BY origen, pais
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p11.png)
 
 **Comentario:** Uso UNION ALL para unir los tres orígenes de contactos sin eliminar filas repetidas.
 
@@ -369,7 +369,8 @@ ORDER BY pais;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p12A.png)
+![Descripción de la imagen](images/P12B.png)
 
 **Comentario:** Uso EXCEPT para obtener los países de clientes que no tienen proveedores, e INTERSECT para obtener los países que tienen ambos.
 
@@ -404,7 +405,7 @@ ORDER BY pedidos_realizados DESC;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p13.png)
 
 **Comentario:** Uso NOT EXISTS para excluir a los clientes que han comprado algún producto de la categoría Seafood.
 
@@ -432,7 +433,7 @@ ORDER BY diferencia DESC;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p14.png)
 
 **Comentario:** Calculo el precio medio con una subconsulta y lo comparo con el precio de cada producto para mostrar solo los que están por encima de la media.
 
@@ -471,7 +472,7 @@ LIMIT 15;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p15.png)
 
 **Comentario:** Primero calculo el importe total de cada pedido y después obtengo la media de esos importes por cliente, ya que promediar directamente las líneas daría un resultado incorrecto.
 
@@ -507,7 +508,7 @@ WHERE p.unit_price = (
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p16.png)
 
 **Comentario:** Uso una subconsulta para comparar el precio de cada producto con el precio máximo de su categoría y así obtener el producto más caro de cada una.
 
@@ -567,7 +568,7 @@ ORDER BY segmento;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p17.png)
 
 **Comentario:** Uso NTILE(4) para dividir a los clientes en cuatro grupos según su facturación y un CASE para asignar la etiqueta de segmento correspondiente.
 
@@ -613,7 +614,7 @@ ORDER BY categoria, posicion_en_categoria;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p18.png)
 
 **Comentario:** Uso RANK() con PARTITION BY para ordenar los productos dentro de cada categoría, y otro RANK() para mostrar su posición general en la empresa.
 
@@ -662,7 +663,7 @@ ORDER BY mes;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p19.png)
 
 **Comentario:** Uso funciones de ventana para calcular el acumulado, la media móvil de tres meses y la comparación con el mes anterior mediante LAG().
 
@@ -718,7 +719,7 @@ ORDER BY categoria NULLS LAST;
 
 **Resultado:**
 
-
+![Descripción de la imagen](images/p20.png)
 
 **Comentario:** Uso FILTER para separar la facturación por año en columnas y ROLLUP para añadir la fila de totales al final.
 
